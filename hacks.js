@@ -87,3 +87,10 @@ let array11 = array.filter(item => {
 
 // console.log(array11);
 // [{name: "Douglas"}, {name: "Nicky"}, {name: ""}]
+
+// 5. Iterate on the map from 0 to n.
+// *************************************
+
+let newMap = [...Array(10)].map((item, index)=> index);
+
+// console.log(newMap);  // (10) [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
