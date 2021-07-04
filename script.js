@@ -19,18 +19,17 @@ const toSlug = input =>
       .join('-')
   );
 
-console.log(toSlug('JS Cheerleader')); // js-cheerleader
+// console.log(toSlug('JS Cheerleader')); // js-cheerleader
 
-//  In order to accomplish this, we’re using composable forms of common utilities like `split()`, `join()` and `map()`. 
+//  In order to accomplish this, we’re using composable forms of common utilities like `split()`, `join()` and `map()`.
 // Here are the implementations:
 
-const curry = fn =>(...args)=> fn.bind(null, ...args);
+const curry = fn => (...args) => fn.bind(null, ...args);
 const map = curry((fn, arr) => arr.map(fn));
 
-const join = curry((str, arr) =>arr.join(str));
+const join = curry((str, arr) => arr.join(str));
 const toLowerCase = str => str.toLowerCase();
 
 const split = curry((splitOn, str) => str.split(splitOn));
 
 // ............incomplete
-
