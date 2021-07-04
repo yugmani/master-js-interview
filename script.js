@@ -32,5 +32,5 @@ const toLowerCase = str => str.toLowerCase();
 
 const split = curry((splitOn, str) => str.split(splitOn));
 
-............incomplete
+// ............incomplete
 
