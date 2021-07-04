@@ -50,10 +50,40 @@ let arr2 = [6, 7, 8];
 let arr3 = arr1.concat(arr2);
 // //This will Create a new array arr3 and then will push contents fo arr1 and arr2 in arr3 which will consume lot of memory.
 
-console.log(arr3); // (8) [1, 2, 3, 4, 5, 6, 7, 8]
+// console.log(arr3); // (8) [1, 2, 3, 4, 5, 6, 7, 8]
 
 // Modern way without causing server overload
 let r1 = [1, 2, 3];
 let r2 = [11, 22, 33];
 r1.push.apply(r1, r2); // it will only push the content of array b in array a.
 // console.log(r1); // (6) [1, 2, 3, 11, 22, 33]
+
+// 4. Use Filter in a different way
+// *************************************
+
+let array = [
+  null,
+  undefined,
+  { name: 'Douglas' },
+  { name: 'Nicky' },
+  { name: '' },
+  null
+];
+
+// let newArray = array.filter(item=>{
+//   item.name.length > 0;
+// }
+//   ) // TypeError: Cannot read property 'name' of null at Array.filter
+
+// we can use filter with Boolean to remove null and undefined values.
+
+newArray = array.filter(Boolean).filter(el => el.name.length > 0);
+
+// console.log(newArray);  // [{"name":"Douglas"}, {"name":"Nicky"}];
+
+let array11 = array.filter(item => {
+  return typeof item === 'object' && item !== null;
+});
+
+// console.log(array11);
+// [{name: "Douglas"}, {name: "Nicky"}, {name: ""}]
