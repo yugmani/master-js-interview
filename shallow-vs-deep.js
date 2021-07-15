@@ -58,3 +58,25 @@ clonedStudent.grade = 6;
 // Only the cloned object is modified
 // console.log('Cloned Student=>', clonedStudent);
 // Cloned Student=> {name: "Brad", grade: 6}
+
+// ********* Primitive data types ********
+// *****************************************
+
+// When you create a copy of primitive data types, you don’t need to worry as they are tightly coupled with the variable. So it will be always a real copy.
+
+const q1 = 75;
+let q2 = q1;
+
+// Before modification
+// console.log("q1: ", q1);
+// console.log("q2: ", q2);
+// q1:  75
+// q2: 75
+
+// After modification
+q2 = 7;
+
+console.log('q1: ', q1);
+console.log('q2: ', q2);
+// q1:  75  // => See it is not modified
+// q2: 57   // => See it is modified
