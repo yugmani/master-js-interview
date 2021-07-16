@@ -147,4 +147,36 @@ arrTwo[2][1] = null;
 // Here the nested values of c will change but the first initial value won't.
 // Because using spread operator it doesn't provide deep copy with nested arrays.
 
+// Array Methods - Map, ForEach, and Slice
+// ****************************************
 
+// All of these methods return a new array but they do not provide complete deep copy, similar to the spread operator it doesn’t provide deep copy for nested arrays.
+
+// MAP
+const arrOriginal = [1, 2, [3, 4]];
+const arrThree = arrOriginal.map(el => el);
+// console.log('arrThree: ', arrThree); // [1, 2, [3, 4]];
+
+// After modification
+arrThree[0] = 100; // modify the values of outer array
+arrThree[2][1] = null; // modify the values of nested array
+
+// see what is modified
+// console.log('arrThree: ', arrThree); // [100, 2, [3, null]];
+// console.log('arrOriginal: ', arrOriginal); // [1, 2, [3, null]];
+
+// SLICE
+const arrNew = [1, [2, 3], 4];
+const arrFour = arrNew.slice(0);
+
+// Before modification
+// console.log('arrFour: ', arrFour);
+// arrFour:  [1, [2, 3], 4];
+
+// After modification
+arrFour[2] = 404;
+arrFour[1][1] = null;
+
+// see what is changed =>
+console.log('arrFour: ', arrFour); // [1, [2, null], 404];
+console.log('arrNew: ', arrNew); //  [1, [2, null], 4];
