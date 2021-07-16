@@ -73,10 +73,78 @@ let q2 = q1;
 // q1:  75
 // q2: 75
 
+const p1 = 'blue';
+let p2 = p1;
+// console.log('p1: ', p1); // p1:  blue
+// console.log('p2: ', p2); // p2:  blue
+
 // After modification
 q2 = 7;
 
-console.log('q1: ', q1);
-console.log('q2: ', q2);
+// console.log('q1: ', q1);
+// console.log('q2: ', q2);
 // q1:  75  // => See it is not modified
 // q2: 57   // => See it is modified
+
+p2 = 'red';
+// console.log('p1: ', p1); // p1:  blue
+// console.log('p2: ', p2); // p2:  red
+
+// ****** Composite Data Types ******
+// ************************************
+
+// 1. Arrays  (technically they are also objects, so they behave in the same way).
+// 2. Objects
+
+// When you create a composite data type, the values are actually stored once when instantiated, and assigning a variable just creates a reference to that value.
+
+const person = {
+  name: 'Christian',
+  age: 35
+};
+
+// Before Modification
+const copyOfPerson = person;
+// console.log('copyOfPerson: ', copyOfPerson); // copyOfPerson:  {name: "Christian", age: 35}
+
+// After modification
+copyOfPerson.age = 53;
+// console.log('person: ', person); // person:  {name: "Christian", age: 53}
+
+// both copyOfPerson and person both share the same memory address. So, modifiying one of these two modify another too.
+
+// This is often problematic since we expect the old variable to have original values, not the changed ones.
+
+// Let's check different ways to copy composite data type
+
+// ********** ARRAYS *********
+// *******************************
+
+// For copying, arrays are similar to copying objects, since arrays are also objects.
+
+// ****** SPREAD OPERATOR *******
+
+// Technically it doesn’t provide a complete deep copy.
+// It only provides deep copy if the arrays are not nested arrays or 2D or 3D etc.
+// If the arrays are nested arrays, it provides a deep copy to the first instance of the values and all the nested arrays are shallow copies.
+
+// Nested arrays
+const arrOne = [1, 2, [3, 4], 5];
+const arrTwo = [...arrOne];
+
+// Before Modification
+// console.log('arr1: ', arrOne); // arr1:  (4) [1,2, [3,4], 5]
+// console.log('arr2: ', arrTwo); // arr2:  (4) [1,2, [3,4], 5];
+
+// After modification
+arrTwo[0] = 0;
+arrTwo[2][1] = null;
+
+// See what is changed
+// console.log('arr1: ', arrOne); // [1, 2, [3, null], 5];
+// console.log('arr2: ', arrTwo); // [0, 2, [3, null], 5];
+
+// Here the nested values of c will change but the first initial value won't.
+// Because using spread operator it doesn't provide deep copy with nested arrays.
+
+
