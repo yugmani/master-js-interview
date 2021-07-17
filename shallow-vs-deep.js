@@ -178,5 +178,24 @@ arrFour[2] = 404;
 arrFour[1][1] = null;
 
 // see what is changed =>
-console.log('arrFour: ', arrFour); // [1, [2, null], 404];
-console.log('arrNew: ', arrNew); //  [1, [2, null], 4];
+// console.log('arrFour: ', arrFour); // [1, [2, null], 404];
+// console.log('arrNew: ', arrNew); //  [1, [2, null], 4];
+
+// ForEach
+
+const myArray1 = [[1, 2], 3, 4];
+const myArray2 = [];
+
+myArray1.forEach(el => myArray2.push(el));
+
+// Before Modification
+console.log('myArray1: ', myArray1); // [[1, 2], 3, 4];
+console.log('myArray2: ', myArray2); // [[1, 2], 3, 4];
+
+// After Modification
+myArray2[0][1] = null; // modify the nested array
+myArray2[2] = 404; // modify outer array
+
+// See the changes
+console.log('myArray1: ', myArray1); // [[1, null], 3, 4];
+console.log('myArray2: ', myArray2); // [[1, null], 3, 404];
