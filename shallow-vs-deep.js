@@ -189,13 +189,37 @@ const myArray2 = [];
 myArray1.forEach(el => myArray2.push(el));
 
 // Before Modification
-console.log('myArray1: ', myArray1); // [[1, 2], 3, 4];
-console.log('myArray2: ', myArray2); // [[1, 2], 3, 4];
+// console.log('myArray1: ', myArray1); // [[1, 2], 3, 4];
+// console.log('myArray2: ', myArray2); // [[1, 2], 3, 4];
 
 // After Modification
 myArray2[0][1] = null; // modify the nested array
 myArray2[2] = 404; // modify outer array
 
 // See the changes
-console.log('myArray1: ', myArray1); // [[1, null], 3, 4];
-console.log('myArray2: ', myArray2); // [[1, null], 3, 404];
+// console.log('myArray1: ', myArray1); // [[1, null], 3, 4];
+// console.log('myArray2: ', myArray2); // [[1, null], 3, 404];
+
+// JSON Parse and Stringify method
+// ****************************************
+
+// The best way to copy objects without any worry is JSON methods which provide complete Deep Copy.
+
+// But you can create your own custom functions for a deep copy for nested arrays or you can use external libraries like JQuery and lodash.
+
+const myArray3 = [1, [2, 3], 4];
+
+const deepCopy1 = JSON.parse(JSON.stringify(myArray3));
+
+// Before modification
+console.log('Original: ', myArray3); // Original:  (3) [1, [2, 3], 4]
+
+console.log('deepCopy: ', deepCopy1); // deepCopy:  (3) [1, [2, 3], 4]
+
+// After modification
+
+deepCopy1[0] = 111;
+deepCopy1[1][1] = null;
+
+// console.log('Original: ', myArray3); // [1, [2, 3], 4];  => NO change
+// console.log('deepCopy', deepCopy1); // [111, [2, null], 4];  => All changes
