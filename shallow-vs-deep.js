@@ -152,7 +152,8 @@ arrTwo[2][1] = null;
 
 // All of these methods return a new array but they do not provide complete deep copy, similar to the spread operator it doesn’t provide deep copy for nested arrays.
 
-// MAP
+// ****** MAP *******
+
 const arrOriginal = [1, 2, [3, 4]];
 const arrThree = arrOriginal.map(el => el);
 // console.log('arrThree: ', arrThree); // [1, 2, [3, 4]];
@@ -165,7 +166,8 @@ arrThree[2][1] = null; // modify the values of nested array
 // console.log('arrThree: ', arrThree); // [100, 2, [3, null]];
 // console.log('arrOriginal: ', arrOriginal); // [1, 2, [3, null]];
 
-// SLICE
+// ********* SLICE **********
+
 const arrNew = [1, [2, 3], 4];
 const arrFour = arrNew.slice(0);
 
@@ -212,9 +214,9 @@ const myArray3 = [1, [2, 3], 4];
 const deepCopy1 = JSON.parse(JSON.stringify(myArray3));
 
 // Before modification
-console.log('Original: ', myArray3); // Original:  (3) [1, [2, 3], 4]
+// console.log('Original: ', myArray3); // Original:  (3) [1, [2, 3], 4]
 
-console.log('deepCopy: ', deepCopy1); // deepCopy:  (3) [1, [2, 3], 4]
+// console.log('deepCopy: ', deepCopy1); // deepCopy:  (3) [1, [2, 3], 4]
 
 // After modification
 
@@ -223,3 +225,35 @@ deepCopy1[1][1] = null;
 
 // console.log('Original: ', myArray3); // [1, [2, 3], 4];  => NO change
 // console.log('deepCopy', deepCopy1); // [111, [2, null], 4];  => All changes
+
+// OBJECTS
+// *****************************************
+
+// ******** Object.assign() *********
+
+// When using the assign method we have to make sure the object copies at least a second argument.
+// Normally you would just pass an empty object as the first argument. It doesn’t provide a complete deep copy similar to the spread operator.
+
+const user = {
+  name: 'Princess',
+  age: 35,
+  salary: {
+    annual: '100K',
+    hourly: 50
+  }
+};
+
+const copyOfUser1 = Object.assign({}, user);
+
+// Before Modification
+
+// console.log('User: ', user); // User:  {name: "Princess", age: 35, salary: {annual:'100K', hourly:50}};
+// console.log('Copied User: ', copyOfUser1); // Copied User:  {name: "Princess", age: 35, salary: {annual:'100K', hourly:50}};
+
+// After Modification
+copyOfUser1.name = 'Jennifer';
+copyOfUser1.salary.annual = '200K';
+
+// console.log('User: ', user); // User:  {name: "Princess", age: 35, salary: {annual:'200K', hourly:50}};
+// console.log('Copied User: ', copyOfUser1); // Copied User:  {name: "Jennifer", age: 35, salary: {annual:'200K', hourly:50}};
+
