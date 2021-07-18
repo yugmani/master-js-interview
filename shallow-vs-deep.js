@@ -234,7 +234,7 @@ deepCopy1[1][1] = null;
 // When using the assign method we have to make sure the object copies at least a second argument.
 // Normally you would just pass an empty object as the first argument. It doesn’t provide a complete deep copy similar to the spread operator.
 
-const user = {
+const user1 = {
   name: 'Princess',
   age: 35,
   salary: {
@@ -243,17 +243,45 @@ const user = {
   }
 };
 
-const copyOfUser1 = Object.assign({}, user);
+const copyOfUser1 = Object.assign({}, user1);
 
 // Before Modification
 
-// console.log('User: ', user); // User:  {name: "Princess", age: 35, salary: {annual:'100K', hourly:50}};
-// console.log('Copied User: ', copyOfUser1); // Copied User:  {name: "Princess", age: 35, salary: {annual:'100K', hourly:50}};
+// console.log('User: ', user1); // User:  {name: "Princess", age: 35, salary: {annual:'100K', hourly:50}};
+// console.log('Copied User1: ', copyOfUser1); // Copied User:  {name: "Princess", age: 35, salary: {annual:'100K', hourly:50}};
 
 // After Modification
 copyOfUser1.name = 'Jennifer';
 copyOfUser1.salary.annual = '200K';
 
-// console.log('User: ', user); // User:  {name: "Princess", age: 35, salary: {annual:'200K', hourly:50}};
-// console.log('Copied User: ', copyOfUser1); // Copied User:  {name: "Jennifer", age: 35, salary: {annual:'200K', hourly:50}};
+// console.log('User1: ', user1); // User:  {name: "Princess", age: 35, salary: {annual:'200K', hourly:50}};
+// console.log('Copied User1: ', copyOfUser1); // Copied User1:  {name: "Jennifer", age: 35, salary: {annual:'200K', hourly:50}};
 
+// ********** Object.create() **********
+
+// This method creates a new object using an existing object as the prototype of the newly created object.
+// The existing object is made available as a prototype making all the properties available to the new object.
+// But in terms of copying it provides partial deep copying like assign and spread operator.
+
+const user2 = {
+  name: 'Sunita',
+  age: 25,
+  salary: {
+    annual: '80K',
+    hourly: 40
+  }
+};
+
+const copyOfUser2 = Object.create(user2);
+
+// Before Modification
+// console.log("User2: ", user2) // User2:  {name: "Sunita", age: 25, salary: {annual:'80K', hourly:40}}
+// console.log("Copy of User2: ", copyOfUser2) // Copy of User2:  {};
+
+// After Modification
+copyOfUser2.name = 'Rawan';
+copyOfUser2.salary.annual = '202K';
+
+// See the modification
+// console.log("User2: ", user2) // User2:  {name: "Sunita", age: 25, salary: {annual:'202K', hourly:40}}
+// console.log("Copy of User2: ", copyOfUser2) // Copy of User2:  // User2:  {name: "Rawan"}
