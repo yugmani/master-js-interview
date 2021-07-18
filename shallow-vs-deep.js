@@ -285,3 +285,64 @@ copyOfUser2.salary.annual = '202K';
 // See the modification
 // console.log("User2: ", user2) // User2:  {name: "Sunita", age: 25, salary: {annual:'202K', hourly:40}}
 // console.log("Copy of User2: ", copyOfUser2) // Copy of User2:  // User2:  {name: "Rawan"}
+
+// ******** Spread Operator *********
+
+const user3 = {
+  name: 'Devyani',
+  age: 45,
+  salary: {
+    annual: '300K',
+    hourly: 80
+  }
+};
+
+const copyOfUser3 = { ...user3 };
+
+// Before Modification
+
+console.log('User3: ', user3);
+// User3:  {name: "Devyani", age: 45, salary: { annual: '300K', hourly: 80 }}
+console.log('copyOfUser3: ', copyOfUser3);
+// copy Of User3:  {name: "Devyani", age: 45, salary: { annual: '300K', hourly: 80 }}
+
+// After modification
+copyOfUser3.name = 'Kalawati';
+copyOfUser3.salary.annual = '303K';
+
+console.log('User3: ', user3);
+// User3:  {name: "Devyani", age: 45, salary: { annual: '303K', hourly: 80 }}
+console.log('copyOfUser3: ', copyOfUser3);
+// copy Of User3:  {name: "Kalawati", age: 45, salary: { annual: '303K', hourly: 80 }}
+
+// *************************************
+// DEEP COPY
+
+// If we know the depth of the nested objects we can use the nested spread operator to achieve deep copy.
+// But if the depth is unknown then it’s better to avoid spread operator for a deep copy.
+
+const user4 = {
+  name: 'Tripti',
+  age: 23,
+  salary: {
+    annual: '100K',
+    hourly: 35
+  }
+};
+
+const deepCopyOfUser4 = { ...user4, salary: { ...user4.salary } }; //=>DEEP COPY
+
+// Before modification
+console.log('User4: ', user4);
+// User4:  {name: "Tripti", age: 23, salary: {annual: "100K", hourly: 35}}
+console.log('deepCopyofUser4', deepCopyOfUser4);
+// deepCopyofUser4 {name: "Tripti", age: 23, salary: {annual: "100K", hourly: 35}}
+
+// After modification
+deepCopyOfUser4.name = 'Elon Musk';
+deepCopyOfUser4.salary.annual = '202K';
+
+console.log('User4: ', user4);
+// User4:  {name: "Tripti", age: 23, salary: {annual: "100K", hourly: 35}}
+console.log('deepCopyofUser4', deepCopyOfUser4);
+// deepCopyofUser4 {name: "Elon Musk", age: 23, salary: {annual: "202K", hourly: 35}}
