@@ -301,18 +301,18 @@ const copyOfUser3 = { ...user3 };
 
 // Before Modification
 
-console.log('User3: ', user3);
+// console.log('User3: ', user3);
 // User3:  {name: "Devyani", age: 45, salary: { annual: '300K', hourly: 80 }}
-console.log('copyOfUser3: ', copyOfUser3);
+// console.log('copyOfUser3: ', copyOfUser3);
 // copy Of User3:  {name: "Devyani", age: 45, salary: { annual: '300K', hourly: 80 }}
 
 // After modification
 copyOfUser3.name = 'Kalawati';
 copyOfUser3.salary.annual = '303K';
 
-console.log('User3: ', user3);
+// console.log('User3: ', user3);
 // User3:  {name: "Devyani", age: 45, salary: { annual: '303K', hourly: 80 }}
-console.log('copyOfUser3: ', copyOfUser3);
+// console.log('copyOfUser3: ', copyOfUser3);
 // copy Of User3:  {name: "Kalawati", age: 45, salary: { annual: '303K', hourly: 80 }}
 
 // *************************************
@@ -333,16 +333,47 @@ const user4 = {
 const deepCopyOfUser4 = { ...user4, salary: { ...user4.salary } }; //=>DEEP COPY
 
 // Before modification
-console.log('User4: ', user4);
+// console.log('User4: ', user4);
 // User4:  {name: "Tripti", age: 23, salary: {annual: "100K", hourly: 35}}
-console.log('deepCopyofUser4', deepCopyOfUser4);
+// console.log('deepCopyofUser4', deepCopyOfUser4);
 // deepCopyofUser4 {name: "Tripti", age: 23, salary: {annual: "100K", hourly: 35}}
 
 // After modification
 deepCopyOfUser4.name = 'Elon Musk';
 deepCopyOfUser4.salary.annual = '202K';
 
-console.log('User4: ', user4);
+// console.log('User4: ', user4);
 // User4:  {name: "Tripti", age: 23, salary: {annual: "100K", hourly: 35}}
-console.log('deepCopyofUser4', deepCopyOfUser4);
+// console.log('deepCopyofUser4', deepCopyOfUser4);
 // deepCopyofUser4 {name: "Elon Musk", age: 23, salary: {annual: "202K", hourly: 35}}
+
+// ***** JSON Parse and Stringify method ****
+
+// The best way to copy objects without any worry is JSON methods which provide complete Deep Copy.
+// But you can create your own custom functions for a deep copy for nested arrays or you can use external libraries like JQuery and lodash.
+
+const user5 = {
+  name: 'Bill Gates',
+  age: 53,
+  salary: {
+    annual: '200K',
+    hourly: 55
+  }
+};
+
+const copyOfUser5 = JSON.parse(JSON.stringify(user5));
+
+// console.log('User5', user5);
+// User5 {name: "Bill Gates", age: 53, salary: {annual: "200K", hourly: 55}}
+// console.log('copyOfUser5', copyOfUser5);
+// copyOfUser5 {name: "Bill Gates", age: 53, salary: {annual: "200K", hourly: 55}}
+
+// After Modification
+copyOfUser5.name = 'Joe Biden';
+copyOfUser5.salary.annual = '505K';
+
+// console.log('User5', user5);
+// User5 {name: "Bill Gates", age: 53, salary: {annual: "200K", hourly: 55}}
+// console.log('copyOfUser5', copyOfUser5);
+// copyOfUser5 {name: "Joe Biden", age: 53, salary: {annual: "505K", hourly: 55}}
+
